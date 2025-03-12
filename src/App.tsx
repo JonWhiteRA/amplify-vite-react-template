@@ -26,13 +26,21 @@ function App() {
         console.log("Auth session:", session);
         
         // Check if we can find email in different locations
-        if (user) {
+        if (user && user.signInDetails) {
           console.log("User from useAuthenticator:", user);
           
-          setUserEmail(user.signInDetails.loginId);
-          setUserRole(user.signInDetails.authFlowType);
-          setUserAccessKey(session.credentials?.accessKeyId);
-
+          // Only set these values if they exist
+          if (user.signInDetails.loginId) {
+            setUserEmail(user.signInDetails.loginId);
+          }
+          
+          if (user.signInDetails.authFlowType) {
+            setUserRole(user.signInDetails.authFlowType);
+          }
+          
+          if (session.credentials?.accessKeyId) {
+            setUserAccessKey(session.credentials.accessKeyId);
+          }
         }
       } catch (error) {
         console.error("Error getting user info:", error);
