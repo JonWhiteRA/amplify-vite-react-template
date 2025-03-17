@@ -24,7 +24,8 @@ function App() {
         // Try to get the session which might have additional info
         const session = await fetchAuthSession();
         console.log("Auth session:", session);
-        
+        console.log(session.tokens?.accessToken?.toString())
+
         // Check if we can find email in different locations
         if (user && user.signInDetails) {
           console.log("User from useAuthenticator:", user);
