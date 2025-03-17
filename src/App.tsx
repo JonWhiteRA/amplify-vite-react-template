@@ -6,6 +6,7 @@ import { fetchAuthSession, getCurrentUser } from 'aws-amplify/auth';
 
 const client = generateClient<Schema>();
 
+
 function App() {
   const { signOut, user } = useAuthenticator();
   const [todos, setTodos] = useState<Array<Schema["Todo"]["type"]>>([]);
